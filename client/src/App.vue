@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <div>
+      <world-map></world-map>
+    </div>
 
     <div id="wrapper">
       <div id="box-one"> map</div>
@@ -20,7 +23,7 @@
 </template>
 
 <script>
-
+import WorldMap from './components/WorldMap.vue'
 import { eventBus } from '@/main.js';
 import CountryDetail from './components/CountryDetail.vue';
 
@@ -37,7 +40,8 @@ export default {
   },
 
 components: {
-    'country-detail': CountryDetail
+    'country-detail': CountryDetail,
+    'world-map': WorldMap
   },
 
   mounted() {
