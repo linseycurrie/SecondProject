@@ -1,20 +1,25 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
     <div id="wrapper">
       <div id="box-one"> map</div>
     <div id="box-three"> profile</div>
     </div>
     <div id="box-two"> quiz links / images </div>
+=======
+
+
+>>>>>>> 963f4744defa3616a11344d316b826314174a0da
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+ 
   }
 }
 </script>
