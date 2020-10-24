@@ -39,7 +39,7 @@ export default {
 <style>
 
 .map {
-    height: 95hv;
+    height: 95%;
 }
 
 </style>
