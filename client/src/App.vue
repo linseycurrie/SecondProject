@@ -1,11 +1,8 @@
 <template>
   <div id="app">
-    <div>
-      <world-map></world-map>
-    </div>
-
+ 
     <div id="wrapper">
-      <div id="box-one"> map</div>
+      <div id="box-one"> <world-map></world-map></div>
     <div id="box-three">    
       
       <label for="country_select">Country:</label>
