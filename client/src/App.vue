@@ -40,12 +40,9 @@ export default {
     }
   },
 
-<<<<<<< HEAD
 components: {
     'country-detail': CountryDetail,
-<<<<<<< HEAD
-    'quiz': Quiz
-=======
+    'quiz': Quiz,
     'world-map': WorldMap
   },
 
@@ -57,7 +54,6 @@ components: {
     }
   },  
 
->>>>>>> develop
   },
 
   mounted() {
@@ -72,19 +68,7 @@ components: {
       .then(data => this.countries = data)
       console.log(request)
     },
-<<<<<<< HEAD
-    addToQuizList: function(selectedCountry) {
-      this.quizList.push(selectedCountry)
-      if (this.quizList.length > 4) {
-      this.quizList.splice(0, 1)
-    }
-    }
   }
-=======
-    
-
-  },
->>>>>>> develop
 }
 
 </script>
