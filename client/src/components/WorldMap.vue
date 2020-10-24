@@ -19,7 +19,7 @@ import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 
 export default {
     name: 'world_map',
-    props: ['countries']
+    props: ['countries'],
     data (){
         return{
             zoom:13,
@@ -41,7 +41,7 @@ export default {
             return L.latLng(lat, lng);
         },
 }
-
+}
 </script>
 
 <style>
