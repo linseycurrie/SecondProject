@@ -35,13 +35,25 @@ export default {
   data() {
     return {
       countries: [],
-      selectedCountry: null
+      selectedCountry: null,
+      quizList: []
     }
   },
 
+<<<<<<< HEAD
 components: {
     'country-detail': CountryDetail,
     'world-map': WorldMap
+  },
+
+  computed: {
+    addToQuizList: function() {
+    this.quizList.push(this.selectedCountry)
+    if (this.quizList.length > 4) {
+      this.quizList.splice(0, 1)
+    }
+  },  
+
   },
 
   mounted() {
@@ -55,7 +67,9 @@ components: {
       .then(data => this.countries = data)
       console.log(request)
     },
-  }
+    
+
+  },
 }
 
 </script>
