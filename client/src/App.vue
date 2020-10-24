@@ -3,8 +3,8 @@
 
     <div id="wrapper">
       <div id="box-one"> map</div>
-    <div id="box-three">    
-      
+    <div id="box-two">    
+    
       <label for="country_select">Country:</label>
     <select id="country_select" v-model="selectedCountry" v-on:change = "addToQuizList(selectedCountry)" >
       <option disabled value="">Select a country</option>
@@ -13,7 +13,7 @@
 
       <country-detail :selectedCountry="selectedCountry"></country-detail></div>
     </div>
-    <div id="box-two"> <quiz :quizList="quizList"></quiz> </div>
+    <div id="box-three"> <quiz :quizList="quizList"></quiz> </div>
 
   </div>
 
@@ -56,6 +56,9 @@ components: {
     },
     addToQuizList: function(selectedCountry) {
       this.quizList.push(selectedCountry)
+      if (this.quizList.length > 4) {
+      this.quizList.splice(0, 1)
+    }
     }
   }
 }
@@ -83,15 +86,16 @@ components: {
   width: 100%;
   order: 1;
 }
-#box-two {
+#box-two{
+  background-color: rgb(233, 216, 232);
+  width: 100%;
+  order: 3;
+}
+#box-three {
   background-color: cadetblue;
   order: 2;
   width: 30%;
   align-items: stretch;
 }
-#box-three{
-  background-color: rgb(233, 216, 232);
-  width: 100%;
-  order: 3;
-}
+
 </style>
