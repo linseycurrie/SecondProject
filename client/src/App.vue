@@ -40,7 +40,6 @@ export default {
     }
   },
 
-<<<<<<< HEAD
 components: {
     'country-detail': CountryDetail,
     'world-map': WorldMap

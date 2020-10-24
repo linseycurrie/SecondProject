@@ -21,7 +21,7 @@ export default {
             url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
             attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
             marker: L.latLng(47.413220, -1.219482)
-        },
+        }
     },
     components: {
         LMap,
