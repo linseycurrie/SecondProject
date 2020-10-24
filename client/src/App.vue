@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <div>
-      <world-map></world-map>
+      
     </div>
 
     <div id="wrapper">
-      <div id="box-one"> map</div>
+      <div id="box-one"> <world-map :countries="countries"></world-map></div>
     <div id="box-two">    
     
       <label for="country_select">Country:</label>
