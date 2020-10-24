@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <div>
+      <world-map></world-map>
+    </div>
 
     <div id="wrapper">
       <div id="box-one"> map</div>
@@ -20,7 +23,7 @@
 </template>
 
 <script>
-
+import WorldMap from './components/WorldMap.vue'
 import { eventBus } from '@/main.js';
 import CountryDetail from './components/CountryDetail.vue';
 import Quiz from './components/Quiz.vue'
@@ -37,9 +40,24 @@ export default {
     }
   },
 
+<<<<<<< HEAD
 components: {
     'country-detail': CountryDetail,
+<<<<<<< HEAD
     'quiz': Quiz
+=======
+    'world-map': WorldMap
+  },
+
+  computed: {
+    addToQuizList: function() {
+    this.quizList.push(this.selectedCountry)
+    if (this.quizList.length > 4) {
+      this.quizList.splice(0, 1)
+    }
+  },  
+
+>>>>>>> develop
   },
 
   mounted() {
@@ -54,6 +72,7 @@ components: {
       .then(data => this.countries = data)
       console.log(request)
     },
+<<<<<<< HEAD
     addToQuizList: function(selectedCountry) {
       this.quizList.push(selectedCountry)
       if (this.quizList.length > 4) {
@@ -61,6 +80,11 @@ components: {
     }
     }
   }
+=======
+    
+
+  },
+>>>>>>> develop
 }
 
 </script>
