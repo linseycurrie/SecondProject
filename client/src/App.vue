@@ -2,7 +2,7 @@
   <div id="app">
  
     <div id="wrapper">
-      <div id="box-one"> <world-map></world-map></div>
+      <div id="box-one"> <world-map :countries="countries"></world-map></div>
     <div id="box-three">    
       <label for="country_select">Country:</label>
     <select id="country_select" v-model="selectedCountry">
