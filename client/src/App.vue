@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <div>
-      
-    </div>
+
 
     <div id="wrapper">
       <div id="box-one"> <world-map :countries="countries"></world-map></div>
     <div id="box-two">    
     
+
+ 
+    <div id="wrapper">
+      <div id="box-one"> <world-map :countries="countries"></world-map></div>
+    <div id="box-three">    
+
       <label for="country_select">Country:</label>
     <select id="country_select" v-model="selectedCountry" v-on:change = "addToQuizList(selectedCountry)" >
       <option disabled value="">Select a country</option>
@@ -86,7 +90,7 @@ components: {
 }
 #wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 70%;
 }
 #box-one{

@@ -7,6 +7,15 @@
         :lat-lng="latLng(country.latlng[0], country.latlng[1])">
     </l-marker>
         
+
+  <div  class="map">
+      <h2>MAP</h2>
+    <l-map v-if="countries" :zoom="zoom" :center="center">
+      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+      <l-marker 
+      v-for="(country, index) in countries" :key="index" 
+       :lat-lng="latLng(country.latlng[0], country.latlng[1])"></l-marker>
+
     </l-map>
 
   </div>
@@ -19,7 +28,7 @@ import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 
 export default {
     name: 'world_map',
-    props: ['countries']
+    props: ['countries'],
     data (){
         return{
             zoom:13,
@@ -29,25 +38,23 @@ export default {
             marker: L.latLng(47.413220, -1.219482)
         }
     },
-
     components: {
-        LMap,
-        LTileLayer,
-        LMarker
+          LMap,
+          LTileLayer,
+          LMarker
     },
-
     methods: {
         latLng: function(lat, lng){
             return L.latLng(lat, lng);
         },
+  }
 }
 
 </script>
-
 <style>
 
-#map {
-    height: 95hv;
+.map {
+    height: 95%;
 }
 
 </style>
