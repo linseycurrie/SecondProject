@@ -6,14 +6,14 @@
     <div id="box-three">    
       
       <label for="country_select">Country:</label>
-    <select id="country_select" v-model="selectedCountry">
+    <select id="country_select" v-model="selectedCountry" v-on:change = "addToQuizList(selectedCountry)" >
       <option disabled value="">Select a country</option>
       <option v-for="(country, index) in countries" :value="country" :key="index">{{ country.name }}</option>
     </select>
 
       <country-detail :selectedCountry="selectedCountry"></country-detail></div>
     </div>
-    <div id="box-two"> quiz links / images </div>
+    <div id="box-two"> <quiz :quizList="quizList"></quiz> </div>
 
   </div>
 
@@ -23,7 +23,7 @@
 
 import { eventBus } from '@/main.js';
 import CountryDetail from './components/CountryDetail.vue';
-
+import Quiz from './components/Quiz.vue'
 
 
 export default {
@@ -32,16 +32,19 @@ export default {
   data() {
     return {
       countries: [],
-      selectedCountry: null
+      selectedCountry: null,
+      quizList: []
     }
   },
 
 components: {
-    'country-detail': CountryDetail
+    'country-detail': CountryDetail,
+    'quiz': Quiz
   },
 
   mounted() {
     this.fetchCountries()
+    
   },
 
   methods: {
@@ -51,6 +54,9 @@ components: {
       .then(data => this.countries = data)
       console.log(request)
     },
+    addToQuizList: function(selectedCountry) {
+      this.quizList.push(selectedCountry)
+    }
   }
 }
 
