@@ -6,17 +6,17 @@
 
     <div id="wrapper">
       <div id="box-one"> map</div>
-    <div id="box-three">    
-      
+    <div id="box-two">    
+    
       <label for="country_select">Country:</label>
-    <select id="country_select" v-model="selectedCountry">
+    <select id="country_select" v-model="selectedCountry" v-on:change = "addToQuizList(selectedCountry)" >
       <option disabled value="">Select a country</option>
       <option v-for="(country, index) in countries" :value="country" :key="index">{{ country.name }}</option>
     </select>
 
       <country-detail :selectedCountry="selectedCountry"></country-detail></div>
     </div>
-    <div id="box-two"> quiz links / images </div>
+    <div id="box-three"> <quiz :quizList="quizList"></quiz> </div>
 
   </div>
 
@@ -26,7 +26,7 @@
 import WorldMap from './components/WorldMap.vue'
 import { eventBus } from '@/main.js';
 import CountryDetail from './components/CountryDetail.vue';
-
+import Quiz from './components/Quiz.vue'
 
 
 export default {
@@ -42,6 +42,7 @@ export default {
 
 components: {
     'country-detail': CountryDetail,
+    'quiz': Quiz,
     'world-map': WorldMap
   },
 
@@ -57,6 +58,7 @@ components: {
 
   mounted() {
     this.fetchCountries()
+    
   },
 
   methods: {
@@ -66,9 +68,7 @@ components: {
       .then(data => this.countries = data)
       console.log(request)
     },
-    
-
-  },
+  }
 }
 
 </script>
@@ -94,15 +94,16 @@ components: {
   width: 100%;
   order: 1;
 }
-#box-two {
+#box-two{
+  background-color: rgb(233, 216, 232);
+  width: 100%;
+  order: 3;
+}
+#box-three {
   background-color: cadetblue;
   order: 2;
   width: 30%;
   align-items: stretch;
 }
-#box-three{
-  background-color: rgb(233, 216, 232);
-  width: 100%;
-  order: 3;
-}
+
 </style>
