@@ -1,29 +1,21 @@
 <template>
   <div id="map">
-    <l-map :zoom="zoom" :center="center">
+    <h1>MAP</h1>
+    <l-map v-if="countries"
+        :zoom="zoom" :center="center">
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-        <l-marker v-if="countries"
-        v-for="(country, index) in countries" :key="index" :value="country"
-        :lat-lng="latLng(country.latlng[0], country.latlng[1])">
-    </l-marker>
-        
-
-  <div  class="map">
-      <h2>MAP</h2>
-    <l-map v-if="countries" :zoom="zoom" :center="center">
-      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-      <l-marker 
-      v-for="(country, index) in countries" :key="index" 
-       :lat-lng="latLng(country.latlng[0], country.latlng[1])"></l-marker>
-
+        <l-marker class="marker"
+          v-for="(country, index) in countries" :key="index" 
+          :lat-lng="latLng(country.latlng[0], country.latlng[1])">
+        </l-marker>
     </l-map>
-
   </div>
 </template>
 
 <script>
 import L from 'leaflet';
 import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+import { eventBus } from'../main.js';
 
 
 export default {
@@ -35,7 +27,9 @@ export default {
             center: L.latLng(47.413220, -1.219482),
             url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
             attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-            marker: L.latLng(47.413220, -1.219482)
+            marker: L.latLng(47.413220, -1.219482),
+
+            country: null
         }
     },
     components: {
@@ -47,14 +41,16 @@ export default {
         latLng: function(lat, lng){
             return L.latLng(lat, lng);
         },
+
+        // handleClick: function(){
+        //   eventBus.emit$('selected-country', this.country)
+        // }
+
   }
 }
 
 </script>
 <style>
 
-.map {
-    height: 95%;
-}
 
 </style>

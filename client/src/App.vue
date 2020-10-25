@@ -1,27 +1,28 @@
 <template>
   <div id="app">
-
-
+     
     <div id="wrapper">
-      <div id="box-one"> <world-map :countries="countries"></world-map></div>
-    <div id="box-two">    
-    
+      <div id="box-one"> </div>
+        <world-map :countries="countries"></world-map>
+      
+    </div>
 
- 
-    <div id="wrapper">
-      <div id="box-one"> <world-map :countries="countries"></world-map></div>
+    <div id="box-two">
+
+    </div>
+
     <div id="box-three">    
-
       <label for="country_select">Country:</label>
-    <select id="country_select" v-model="selectedCountry" v-on:change = "addToQuizList(selectedCountry)" >
+      <select id="country_select" v-model="selectedCountry" v-on:change = "addToQuizList(selectedCountry)" >
       <option disabled value="">Select a country</option>
       <option v-for="(country, index) in countries" :value="country" :key="index">{{ country.name }}</option>
-    </select>
-
-      <country-detail :selectedCountry="selectedCountry"></country-detail></div>
+      </select>
+      <country-detail :selectedCountry="selectedCountry"></country-detail>
+      <div id="box-three"> 
+        <quiz :quizList="quizList"></quiz> 
+      </div>
     </div>
-    <div id="box-three"> <quiz :quizList="quizList"></quiz> </div>
-
+ 
   </div>
 
 </template>
@@ -90,13 +91,13 @@ components: {
 }
 #wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: wrap row;
   width: 70%;
 }
 #box-one{
   background-color: rgb(210, 241, 209);
   width: 100%;
-  order: 1;
+  order: -1;
 }
 #box-two{
   background-color: rgb(233, 216, 232);

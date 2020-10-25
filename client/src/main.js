@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import 'leaflet/dist/leaflet.css';
-=======
-import 'leaflet/dist/leaflet.css'
->>>>>>> feature/map
+
 
 import Vue from 'vue'
 import App from './App.vue'
