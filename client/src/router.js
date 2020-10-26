@@ -11,11 +11,11 @@ const router = new Router({
             name: 'map',
             component: WorldMap
         },
-        {
-            path: '/quiz',
-            name: 'quiz',
-            component: Quiz
-        }
+        // {
+        //     path: '/quiz',
+        //     name: 'quiz',
+        //     component: Quiz
+        // }
     ]
 })
 
