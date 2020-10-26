@@ -9,6 +9,8 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
+    "@codekraft-studio/vue-animated": "^0.1.5",
+    "animate.css": "^4.1.1",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-browser-geolocation": "^1.8.0",

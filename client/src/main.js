@@ -1,4 +1,8 @@
 import 'leaflet/dist/leaflet.css';
+import 'animate.css';
+import VueAnimated from '@codekraft-studio/vue-animated';
+
+Vue.use(VueAnimated);
 
 
 import Vue from 'vue'
