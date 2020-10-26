@@ -9,6 +9,7 @@
     <nav>
       <router-link :to="{name: 'home'}">Home</router-link> <br>
       <router-link :to="{name: 'geography'}">Geography</router-link>
+    
     </nav>
     <router-view id="view"></router-view>
   </div>

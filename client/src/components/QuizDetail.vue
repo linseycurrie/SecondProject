@@ -1,8 +1,6 @@
 <template>
-  <div>
-    
-    <div id="quiz-wrapper" >
-
+    <div id="quiz-wrapper" v-show="this.quizList.length > 0">
+      <form action="">
       <p id = "question"> What is the population of {{answer.name}}? </p>
       <div id="choice-wrapper">
         <div v-for="(entry, index) in this.quizList" :key="index" id="choices" > 
@@ -20,18 +18,16 @@
       </div> 
 
       <button v-on:click="compare" > Check Answers </button>
-
+    </form>
     </div>
-  </div>
+ 
 </template>
 
 <script>
 import {eventBus} from '../main.js'
-import Geography from '../views/Geography.vue'
 
 export default {
-    name: "quiz",
-
+    name: "quizdetail",
     
     data() {
         return {
@@ -43,15 +39,18 @@ export default {
               }
             },
     components: {
-        'geography' : Geography
+      
     },
+    computed: {
 
+    },
       
     mounted() {
-        this.getAnswer(),
+        // this.getAnswer(),
         
         eventBus.$on('quizList', (quizList) => {
            this.quizList = quizList
+           this.getAnswer()
         })
     },
              
@@ -59,13 +58,15 @@ export default {
         getRandomInt: function() {
           return Math.floor(Math.random() * 4);
         },
-
         getAnswer: function() {
-            let index = this.getRandomInt();
-            this.answer = this.quizList[index]
-            },
+          let index = this.getRandomInt();
+          this.answer = this.quizList[index]
+        },
 
-        compare: function(){
+        
+
+        compare: function(event){
+          event.preventDefault()
           let userAnswers = []
           if (this.answer.population === this.population) {
             userAnswers.push(50)
@@ -73,19 +74,18 @@ export default {
           if (this.answer.region === this.region) {
             userAnswers.push(50)
           };
-          console.log("score compare")
-
           this.score = userAnswers.reduce((a,b) => a + b, 0)
+          console.log(this.score)
         },
 
         shuffleArray: function(array) {
-        for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-        }} 
-        } 
+          for (var i = array.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+          }} 
+          } 
 
     }
 </script>
