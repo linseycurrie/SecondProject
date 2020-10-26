@@ -26,6 +26,8 @@ import { eventBus } from'../main.js';
 import Arrow from '../assets/arrow.png'
 
 
+
+
 export default {
     name: 'world_map',
     props: ['countries', 'selectedCountry'],
