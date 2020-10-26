@@ -1,7 +1,7 @@
 <template>
   <div>
     
-    <div id="quiz-wrapper" >
+    <div id="quiz-wrapper"  v-show="this.quizList.length > 0">
 
       <p id = "question"> What is the population of {{answer.name}}? </p>
       <div id="choice-wrapper">
@@ -52,6 +52,7 @@ export default {
         
         eventBus.$on('quizList', (quizList) => {
            this.quizList = quizList
+           this.getAnswer()
         })
     },
              

@@ -7,15 +7,23 @@
         <l-marker class="marker" 
           v-for="(country, index) in countries" :key="index" 
           :lat-lng="latLng(country.latlng[0], country.latlng[1])">
+          <l-icon :icon-url="icon"> </l-icon>>
+          <l-popup> 
+            {{country.name}}
+            <img :src="country.flag" alt="">
+            
+          </l-popup>
         </l-marker>
+        
     </l-map>
   </div>
 </template>
 
 <script>
 import L from 'leaflet';
-import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker, LPopup, LIcon } from 'vue2-leaflet';
 import { eventBus } from'../main.js';
+import Arrow from '../assets/arrow.png'
 
 
 export default {
@@ -28,12 +36,15 @@ export default {
             url:'https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=02874bea11474c4c8f8ed1de617533f2',
             attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
             markerLatlng: [55.8642, 4.2518],
+            icon: Arrow
         }
     },
     components: {
           LMap,
           LTileLayer,
-          LMarker
+          LMarker,
+          LPopup,
+          LIcon
     },
     methods: {
         latLng: function(lat, lng){
@@ -49,6 +60,10 @@ export default {
 #map {
   height: 800px;
   width:100%;
+}
+
+img{
+  height: 90px;
 }
 
 
