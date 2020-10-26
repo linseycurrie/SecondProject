@@ -6,11 +6,15 @@ Vue.use(Router)
 
 const router = new Router({
     mode: 'history',
-    routes: [
+    routes: [{
+            path: '/map',
+            name: 'map',
+            component: WorldMap
+        },
         {
-        path: '/map',
-        name: 'map',
-        component: WorldMap
+            path: '/quiz',
+            name: 'quiz',
+            component: Quiz
         }
     ]
 })
