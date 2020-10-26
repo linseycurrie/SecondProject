@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
      
     <div id="wrapper">
       <div id="box-one"> </div>
@@ -24,47 +25,61 @@
     </div>
  
   </div>
+=======
+    <nav>
+      <router-link :to="{name: 'map'}">Map</router-link>
+      <!-- <router-link :to="{name: 'about'}">About</router-link>
+      <router-link :to="{name: 'contact'}">Contact</router-link> -->
+    </nav>
+    <router-view id="view"></router-view>
+  </div>
+
+
+>>>>>>> 833b9af6420eb50b8b38f68ede017f516bf2f501
 
 </template>
 
+
+
+
 <script>
-import WorldMap from './components/WorldMap.vue'
-import { eventBus } from '@/main.js';
-import CountryDetail from './components/CountryDetail.vue';
-import Quiz from './components/Quiz.vue'
+// import WorldMap from './components/WorldMap.vue'
+// import { eventBus } from '@/main.js';
+// import CountryDetail from './components/CountryDetail.vue';
+// import Quiz from './components/Quiz.vue'
 
 
 export default {
   name: 'App',
 
-  data() {
-    return {
-      countries: [],
-      selectedCountry: null,
-      quizList: []
-    }
-  },
+  // data() {
+  //   return {
+  //     countries: [],
+  //     selectedCountry: null,
+  //     quizList: []
+  //   }
+  // },
 
-components: {
-    'country-detail': CountryDetail,
-    'quiz': Quiz,
-    'world-map': WorldMap
-  },
+// components: {
+//     'country-detail': CountryDetail,
+//     'quiz': Quiz,
+//     'world-map': WorldMap
+//   },
 
-  computed: {
-    addToQuizList: function() {
-    this.quizList.push(this.selectedCountry)
-    if (this.quizList.length > 4) {
-      this.quizList.splice(0, 1)
-    }
-  },  
+//   computed: {
+//     addToQuizList: function() {
+//     this.quizList.push(this.selectedCountry)
+//     if (this.quizList.length > 4) {
+//       this.quizList.splice(0, 1)
+//     }
+//   },  
 
-  },
+//   },
 
-  mounted() {
-    this.fetchCountries()
+  // mounted() {
+  //   this.fetchCountries()
     
-  },
+  // },
 
   methods: {
     fetchCountries: function() {

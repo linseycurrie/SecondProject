@@ -11,7 +11,11 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
+<<<<<<< HEAD
     "vue-browser-geolocation": "^1.8.0",
+=======
+    "vue-router": "^3.4.7",
+>>>>>>> 833b9af6420eb50b8b38f68ede017f516bf2f501
     "vue2-leaflet": "^2.6.0"
   },
   "devDependencies": {
