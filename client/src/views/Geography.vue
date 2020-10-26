@@ -8,10 +8,10 @@
       <country-detail :selectedCountry="selectedCountry"></country-detail>
 
 
-      <world-map v-if="countries" :countries="countries"></world-map>
+      <!-- <world-map v-if="countries" :countries="countries"></world-map> -->
    
       <div v-if="quizList.length === 4 && !quizList.includes(null)">
-         <router-link v-on:click="sendToQuiz" :to="{name: 'quiz'}">Quiz</router-link>
+         <router-link v-on:click.native="sendToQuiz" :to="{name: 'quiz'}" :quizList="this.quizList">Quiz</router-link>
       </div>
   </div>
 </template>
@@ -37,12 +37,7 @@ export default {
   },
     
     computed: {
-      addToQuizList: function() {
-      this.quizList.push(this.selectedCountry)
-      if (this.quizList.length > 4) {
-        this.quizList.splice(0, 1)
-      }
-    },  
+  
 
   },
 
@@ -59,9 +54,17 @@ export default {
         console.log(request)
       },
 
-      sendToQuiz: function() {
+      sendToQuiz: function(event) {
+        event.preventDefault()
+        console.log("send to quiz called")
         eventBus.$emit('quizList', this.quizList)
+      },
+      addToQuizList: function() {
+      this.quizList.push(this.selectedCountry)
+      if (this.quizList.length > 4) {
+        this.quizList.splice(0, 1)
       }
+    }, 
   }
 }
 
