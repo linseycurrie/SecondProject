@@ -15,19 +15,20 @@
 </template>
 
 <script>
-export default {
 
-    name: 'country-detail',
-    props: ['selectedCountry'],
+export default {
+  
+  name: 'country-detail',
+  props: ['selectedCountry'],
 
   //   data() {
-  //   return {
+  //     return {
   //     countries: [],
   //     selectedCountry: null,
   //     quizList: []
   //   }
   // },
-    
+
   //   computed: {
   //     addToQuizList: function() {
   //     this.quizList.push(this.selectedCountry)
@@ -38,10 +39,6 @@ export default {
 
   // },
 
-  //   mounted() {
-  //     fetchCountries()
-    
-  // },
 
 }
 </script>

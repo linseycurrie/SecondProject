@@ -1,67 +1,109 @@
 <template>
-  <div id="quiz">
-      <div id ="questions">
-          <div>
-          <p> Which is spoken in {{answer.name}}? </p>
-          <div v-for="(country, index) in this.quizList" :key="index"> 
-             {{country.languages[0].name}}
-             <input type="radio" id="language-choice" name="language-choice" value="language">
-             </div>
-             <div>
-             <p> Which is the population of {{answer.name}}? </p>
-             <div v-for="(country, index) in this.quizList" :key="index"> 
-             {{country.population}}
-             <input type="radio" id="population-choice" name="population-choice" value="population">
-             </div>
-             </div>
-             <div>
-             <p> What reigon is {{answer.name}} in? </p>
-             <div v-for="(country, index) in this.quizList" :key="index"> 
-             {{country.region}}
-             <input type="radio" id="region-choice" name="region-choice" value="region">
-             </div>
-             </div>
-          </div>
+  <div>
+    
+    <div id="quiz-wrapper" >
+
+      <p id = "question"> What is the population of {{answer.name}}? </p>
+      <div id="choice-wrapper">
+        <div v-for="(entry, index) in this.quizList" :key="index" id="choices" > 
+          {{entry.population}}
+          <input type="radio" id="population-choice" name="population" :value="entry.population" v-model="population">
+        </div>
       </div>
+
+      <p id = "question"> What region is {{answer.name}} in? </p>
+      <div id="choice-wrapper">
+        <div v-for="(entry, index) in this.quizList" :key="index" id="choices" > 
+          {{entry.region}}
+          <input type="radio" id="region-choice" name="region" :value="entry.region" v-model='region'>
+        </div>
+      </div> 
+
+      <button v-on:click="compare" > Check Answers </button>
+
+    </div>
   </div>
 </template>
 
 <script>
 import {eventBus} from '../main.js'
+import Geography from '../views/Geography.vue'
 
 export default {
     name: "quiz",
-    props: ['quizList'],
+
+    
     data() {
         return {
-            answer: [],
-    }
-},
-    computed: {
-        getAnswer(){
-            let index = getRandomInt(4);
-            const answer = this.quizList[index]
-            }
-        },
-    mounted() {
-        eventBus.$on('addToQuizList', (selectedCountry) => {
-        this.quizList.push(selectedCountry) })
-        },
+            answer: null,
+            population: null,
+            region: null,
+            score: 0 ,
+            quizList: []
+              }
+            },
+    components: {
+        'geography' : Geography
+    },
 
+      
+    mounted() {
+        this.getAnswer(),
+        
+        eventBus.$on('quizList', (quizList) => {
+           this.quizList = quizList
+        })
+    },
+             
     methods: {
         getRandomInt: function() {
-         return Math.floor(Math.random() * Math.floor(4));
-        }
-} }
+          return Math.floor(Math.random() * 4);
+        },
 
+        getAnswer: function() {
+            let index = this.getRandomInt();
+            this.answer = this.quizList[index]
+            },
+
+        compare: function(){
+          let userAnswers = []
+          if (this.answer.population === this.population) {
+            userAnswers.push(50)
+          };
+          if (this.answer.region === this.region) {
+            userAnswers.push(50)
+          };
+          console.log("score compare")
+
+          this.score = userAnswers.reduce((a,b) => a + b, 0)
+        },
+
+        shuffleArray: function(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+        }} 
+        } 
+
+    }
 </script>
 
 <style>
-#quiz {
-    display: flex;
-    flex-direction: column wrap;
+#quiz-wrapper {
+  display: flex;
+  flex-direction: column;
 }
-#questions {
-    width: 100%;
+#question {
+  width: 100%
+}
+#choice-wrapper{
+  display: flex;
+  flex-direction: row wrap;
+  justify-content: space-between;
+}
+#choices {
+  background-color: blanchedalmond;
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
-  <div id="map">
-    <h1>MAP</h1>
+  <div  id="map">
+
     <l-map v-if="countries"
         :zoom="zoom" :center="center">
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-        <l-marker class="marker"
+        <l-marker class="marker" 
           v-for="(country, index) in countries" :key="index" 
           :lat-lng="latLng(country.latlng[0], country.latlng[1])">
         </l-marker>
@@ -23,13 +23,11 @@ export default {
     props: ['countries'],
     data (){
         return{
-            zoom:13,
-            center: L.latLng(47.413220, -1.219482),
-            url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+            zoom:5,
+            center: L.latLng(55.8642, 4.2518),
+            url:'https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=02874bea11474c4c8f8ed1de617533f2',
             attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-            marker: L.latLng(47.413220, -1.219482),
-
-            country: null
+            markerLatlng: [55.8642, 4.2518],
         }
     },
     components: {
@@ -39,18 +37,19 @@ export default {
     },
     methods: {
         latLng: function(lat, lng){
-            return L.latLng(lat, lng);
+            return [lat, lng];
         },
 
-        // handleClick: function(){
-        //   eventBus.emit$('selected-country', this.country)
-        // }
 
   }
 }
 
 </script>
 <style>
+#map {
+  height: 800px;
+  width:100%;
+}
 
 
 </style>

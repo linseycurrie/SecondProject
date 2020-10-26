@@ -1,35 +1,14 @@
 <template>
   <div id="app">
 
-     
-    <div id="wrapper">
-        <world-map id="box-one" :countries="countries"></world-map>
-    </div>
-
-    <div id="box-two">
-
-    </div>
-
-    <div id="box-three">    
-      <label for="country_select">Country:</label>
-      <select id="country_select" v-model="selectedCountry" v-on:change = "addToQuizList(selectedCountry)" >
-      <option disabled value="">Select a country</option>
-      <option v-for="(country, index) in countries" :value="country" :key="index">{{ country.name }}</option>
-      </select>
-      <country-detail :selectedCountry="selectedCountry"></country-detail>
-      <div id="box-three"> 
-        <quiz :quizList="quizList"></quiz> 
-      </div>
-    </div>
     
-    <div id="box-four">
+    <!-- <div id="box-four">
       <img class="animate__animated animate__bounce" src="./assets/cute-brain-cartoon.png" alt="brain">
-    </div>
+    </div> -->
 
     <nav>
-      <router-link :to="{name: 'map'}">Map</router-link>
-      <!-- <router-link :to="{name: 'about'}">About</router-link>
-      <router-link :to="{name: 'contact'}">Contact</router-link> -->
+      <router-link :to="{name: 'home'}">Home</router-link> <br>
+      <router-link :to="{name: 'geography'}">Geography</router-link>
     </nav>
     <router-view id="view"></router-view>
   </div>
@@ -40,7 +19,7 @@
 
 
 <script>
-// import WorldMap from './components/WorldMap.vue'
+
 // import { eventBus } from '@/main.js';
 // import CountryDetail from './components/CountryDetail.vue';
 // import Quiz from './components/Quiz.vue'
@@ -79,22 +58,22 @@ export default {
     
   // },
 
-  methods: {
-    fetchCountries: function() {
-      const request = fetch("https://restcountries.eu/rest/v2/all")
-      .then(response => response.json())
-      .then(data => this.countries = data)
-      console.log(request)
-    },
-  }
+  // methods: {
+  //   fetchCountries: function() {
+  //     const request = fetch("https://restcountries.eu/rest/v2/all")
+  //     .then(response => response.json())
+  //     .then(data => this.countries = data)
+  //     console.log(request)
+  //   },
+  // }
 }
 
 </script>
 
 <style>
 #app {
-  display: flex;
-  flex-direction: row wrap;
+  /* display: flex;
+  flex-direction: row wrap; */
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -102,7 +81,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-#wrapper {
+/* #wrapper {
   display: flex;
   flex-direction: column wrap;
   width: 70%;
@@ -132,6 +111,6 @@ export default {
 
 #box-four > img {
   width: 90%;
-}
+} */
 
 </style>
