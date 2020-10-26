@@ -20,7 +20,7 @@ import { eventBus } from'../main.js';
 
 export default {
     name: 'world_map',
-    props: ['countries'],
+    props: ['countries', 'selectedCountry'],
     data (){
         return{
             zoom:5,

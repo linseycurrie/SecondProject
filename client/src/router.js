@@ -17,7 +17,8 @@ const router = new Router({
         {
             path: '/quiz',
             name: 'quiz',
-            component: Quiz
+            component: Quiz,
+            props: true
         },
         {
             path: '',
