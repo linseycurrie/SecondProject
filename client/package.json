@@ -9,13 +9,20 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
+    "@codekraft-studio/vue-animated": "^0.1.5",
+    "animate.css": "^4.1.1",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
+<<<<<<< HEAD
 <<<<<<< HEAD
     "vue-browser-geolocation": "^1.8.0",
 =======
     "vue-router": "^3.4.7",
 >>>>>>> 833b9af6420eb50b8b38f68ede017f516bf2f501
+=======
+    "vue-browser-geolocation": "^1.8.0",
+    "vue-router": "^3.4.7",
+>>>>>>> feature/character
     "vue2-leaflet": "^2.6.0"
   },
   "devDependencies": {

@@ -1,4 +1,13 @@
 import 'leaflet/dist/leaflet.css';
+<<<<<<< HEAD
+=======
+import 'animate.css';
+import VueAnimated from '@codekraft-studio/vue-animated';
+
+Vue.use(VueAnimated);
+
+
+>>>>>>> feature/character
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'

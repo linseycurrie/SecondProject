@@ -1,11 +1,9 @@
 <template>
   <div id="app">
-<<<<<<< HEAD
+
      
     <div id="wrapper">
-      <div id="box-one"> </div>
-        <world-map :countries="countries"></world-map>
-      
+        <world-map id="box-one" :countries="countries"></world-map>
     </div>
 
     <div id="box-two">
@@ -23,9 +21,11 @@
         <quiz :quizList="quizList"></quiz> 
       </div>
     </div>
- 
-  </div>
-=======
+    
+    <div id="box-four">
+      <img class="animate__animated animate__bounce" src="./assets/cute-brain-cartoon.png" alt="brain">
+    </div>
+
     <nav>
       <router-link :to="{name: 'map'}">Map</router-link>
       <!-- <router-link :to="{name: 'about'}">About</router-link>
@@ -33,9 +33,6 @@
     </nav>
     <router-view id="view"></router-view>
   </div>
-
-
->>>>>>> 833b9af6420eb50b8b38f68ede017f516bf2f501
 
 </template>
 
@@ -47,6 +44,7 @@
 // import { eventBus } from '@/main.js';
 // import CountryDetail from './components/CountryDetail.vue';
 // import Quiz from './components/Quiz.vue'
+
 
 
 export default {
@@ -106,13 +104,13 @@ export default {
 }
 #wrapper {
   display: flex;
-  flex-direction: wrap row;
+  flex-direction: column wrap;
   width: 70%;
 }
 #box-one{
   background-color: rgb(210, 241, 209);
   width: 100%;
-  order: -1;
+  order: 1;
 }
 #box-two{
   background-color: rgb(233, 216, 232);
@@ -124,6 +122,16 @@ export default {
   order: 2;
   width: 30%;
   align-items: stretch;
+}
+
+#box-four {
+  background-color: palegoldenrod;
+  order: 3;
+  width: 30%;
+}
+
+#box-four > img {
+  width: 90%;
 }
 
 </style>
