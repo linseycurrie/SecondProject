@@ -14,13 +14,6 @@ const router = new Router({
             name: 'geography',
             component: Geography
         },
-<<<<<<< HEAD
-        // {
-        //     path: '/quiz',
-        //     name: 'quiz',
-        //     component: Quiz
-        // }
-=======
         {
             path: '/quiz',
             name: 'quiz',
@@ -31,7 +24,6 @@ const router = new Router({
             name: 'home',
             component: Home
         }
->>>>>>> 989e9b55a6aa0ae5356fedd49d8fb76453abf8ab
     ]
 })
 
