@@ -5,8 +5,8 @@
     <img class="lrg-flag" :src="selectedCountry.flag" alt="">
     <h3> Capital City: {{ selectedCountry.capital }} </h3>
     <h3> Region: {{ selectedCountry.subregion }}, {{ selectedCountry.region }} </h3>
-    <h3> Area: {{ selectedCountry.area.toLocaleString() }}km²</h3>
-    <h3> Population: {{ selectedCountry.population.toLocaleString() }}</h3>
+    <h3> Area: {{ selectedCountry.area }}km²</h3>
+    <h3> Population: {{ selectedCountry.population }}</h3>
     <h3> Demonym: {{ selectedCountry.demonym }}</h3>
 
   
@@ -19,10 +19,7 @@
 export default {
   
   name: 'country-detail',
-  props: ['selectedCountry'],
-
-
-
+  props: ['selectedCountry']
 
 }
 </script>

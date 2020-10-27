@@ -21,8 +21,8 @@ export default {
     
     data(){
         return {
-            'search': '',
-            'selectedCountry': {},
+            search: '',
+            selectedCountry: {},
         }
     },
 
