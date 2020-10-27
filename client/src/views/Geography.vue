@@ -13,7 +13,7 @@
       </div>
 
 
-      <world-map v-if="countries" :countries="countries" :selectedCountry="selectedCountry"></world-map>
+      <!-- <world-map v-if="countries" :countries="countries" :selectedCountry="selectedCountry"></world-map> -->
 
 
    
@@ -61,7 +61,8 @@ export default {
         eventBus.$emit('quizList', this.quizList)
       },
       addToQuizList: function() {
-      this.quizList.push(this.selectedCountry)
+      if (this.quizList.includes(this.selectedCountry) === false) {
+        this.quizList.push(this.selectedCountry) }
       if (this.quizList.length > 4) {
         this.quizList.splice(0, 1)
       }
