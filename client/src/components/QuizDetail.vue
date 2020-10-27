@@ -1,10 +1,11 @@
 <template>
-    <div id="quiz-wrapper" v-show="this.quizList.length > 0">
-      <form action="">
+  <div id="grid-wrapper">
+    <div id="quiz-wrapper"  v-show="this.quizList.length > 0">
+      <form action="" class="grid-item">
       <p id = "question"> What is the population of {{answer.name}}? </p>
       <div id="choice-wrapper">
         <div v-for="(entry, index) in this.quesOne" :key="index" id="choices" > 
-          {{entry.population}}
+          {{entry.population}}<br>
           <input type="radio" id="population-choice" name="population" :value="entry.population" v-model="population">
         </div>
       </div>
@@ -12,7 +13,7 @@
       <p id = "question"> What region is {{answer.name}} in? </p>
       <div id="choice-wrapper">
         <div v-for="(entry, index) in this.quesTwo " :key="index" id="choices" > 
-          {{entry.region}}
+          {{entry.region}}<br>
           <input type="radio" id="region-choice" name="region" :value="entry.region" v-model='region'>
         </div>
       </div> 
@@ -20,7 +21,7 @@
       <p id = "question"> What are people from {{answer.name}} called? </p>
       <div id="choice-wrapper">
         <div v-for="(entry, index) in this.quesThree" :key="index" id="choices" > 
-          {{entry.demonym}}
+          {{entry.demonym}}<br>
           <input type="radio" id="demonym-choice" name="demonym" :value="entry.demonym" v-model='demonym'>
         </div>
       </div> 
@@ -28,7 +29,7 @@
       <p id = "question"> What is the capital of {{answer.name}}? </p>
       <div id="choice-wrapper">
         <div v-for="(entry, index) in this.quesFour" :key="index" id="choices" > 
-          {{entry.capital}}
+          {{entry.capital}}<br>
           <input type="radio" id="capital-choice" name="capital" :value="entry.capital" v-model='capital'>
         </div>
       </div> 
@@ -36,14 +37,15 @@
       <p id = "question"> Which is the flag of {{answer.name}}? </p>
       <div id="choice-wrapper">
         <div v-for="(entry, index) in this.quesFive" :key="index" id="choices" > 
-          <img :src='entry.flag' width=150 height=75>
+          <img :src='entry.flag' width=150 height=75><br>
           <input type="radio" id="flag-choice" name="flag" :value="entry.flag" v-model='flag'>
         </div>
       </div> 
 
-      <button v-on:click="compare" > Check Answers </button>
+      <button v-on:click="compare" id="button"> Check Answers </button>
       <p v-if="complete">You scored {{this.score}}%! </p>
     </form>
+    </div>
     </div>
  
 </template>
@@ -157,6 +159,17 @@ export default {
 </script>
 
 <style>
+#grid-wrapper {
+  display: grid;
+  grid-template-columns: 40% body body body 40%;
+  align-items: center;
+}
+
+.grid-item {
+  grid-area: body;
+ 
+}
+
 #quiz-wrapper {
   display: flex;
   flex-direction: column;
@@ -168,12 +181,29 @@ export default {
   display: flex;
   flex-direction: row wrap;
   justify-content: space-around;
+  margin: 30px;
+  
 }
 #choices {
-  background-color: blanchedalmond;
+  background-color: #8ECAE6;
+  padding: 40px;
+  text-align: center;
+  width: 50%;
+  margin: 10px;
+  border: 2pt solid #023047;
+  font-weight: bold;
+
 }
 
 #question {
-  font: bold;
+  font-weight: bold;
+  font-size: 20px
+}
+
+#button {
+  border: 1pt solid #FB8500;
+  background-color: #FFB703;
+  font-weight: bolder;
+  padding: 10px;
 }
 </style>
