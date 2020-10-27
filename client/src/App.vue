@@ -1,17 +1,27 @@
 <template>
   <div id="app">
-
-    
-    <!-- <div id="box-four">
-      <img class="animate__animated animate__bounce" src="./assets/cute-brain-cartoon.png" alt="brain">
-    </div> -->
-
-    <nav>
-      <router-link :to="{name: 'home'}">Home</router-link> <br>
-      <router-link :to="{name: 'geography'}">Geography</router-link>
-    
+    <header>
+      <div id="container">
+        <img class="logo" src="https://i.ibb.co/8Y5NvFH/Screenshot-2020-10-27-at-13-58-07.png" height=260 width=200 />
+      <nav id="nav-wrapper">
+      <router-link :to="{name: 'home'}" id="rlink">Home</router-link> <br>
+      <router-link :to="{name: 'geography'}" id="rlink">Geography</router-link>
+      <a href="/">Maths</a>
+      <a href="/">English</a>
+      <a href="/">Science</a>
+      <a href="/">History</a>
+      <a href="/">Languages</a>
     </nav>
+      </div>
+
+    </header>
+    <body>
+    <div id="box-four">
+      <img class="animate__animated animate__bounce" src="./assets/owlGrad.png">
+    </div>
+
     <router-view id="view"></router-view>
+    </body>
   </div>
 
 </template>
@@ -20,98 +30,43 @@
 
 
 <script>
-
-// import { eventBus } from '@/main.js';
-// import CountryDetail from './components/CountryDetail.vue';
-// import Quiz from './components/Quiz.vue'
-
-
-
 export default {
-  name: 'App',
+  name: 'App'
 
-  // data() {
-  //   return {
-  //     countries: [],
-  //     selectedCountry: null,
-  //     quizList: []
-  //   }
-  // },
 
-// components: {
-//     'country-detail': CountryDetail,
-//     'quiz': Quiz,
-//     'world-map': WorldMap
-//   },
-
-//   computed: {
-//     addToQuizList: function() {
-//     this.quizList.push(this.selectedCountry)
-//     if (this.quizList.length > 4) {
-//       this.quizList.splice(0, 1)
-//     }
-//   },  
-
-//   },
-
-  // mounted() {
-  //   this.fetchCountries()
-    
-  // },
-
-  // methods: {
-  //   fetchCountries: function() {
-  //     const request = fetch("https://restcountries.eu/rest/v2/all")
-  //     .then(response => response.json())
-  //     .then(data => this.countries = data)
-  //     console.log(request)
-  //   },
-  // }
 }
 
 </script>
 
 <style>
 #app {
-  /* display: flex;
-  flex-direction: row wrap; */
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  
   color: #2c3e50;
-  margin-top: 60px;
-}
-/* #wrapper {
+  margin-top: 0px;
+};
+#container {
   display: flex;
-  flex-direction: column wrap;
-  width: 70%;
+  flex-direction: row wrap;
+  justify-content: space-around;
 }
-#box-one{
-  background-color: rgb(210, 241, 209);
-  width: 100%;
-  order: 1;
+.logo {
+  background-color: aliceblue;
 }
-#box-two{
-  background-color: rgb(233, 216, 232);
-  width: 100%;
-  order: 3;
-}
-#box-three {
-  background-color: cadetblue;
-  order: 2;
-  width: 30%;
-  align-items: stretch;
+#nav-wrapper {
+  display: flex;
+  flex-direction: row wrap;
+  justify-content: space-between;
 }
 
-#box-four {
-  background-color: palegoldenrod;
-  order: 3;
-  width: 30%;
+#rlink {
+  text-decoration: none;
 }
 
-#box-four > img {
-  width: 90%;
-} */
+body {
+  text-align: center;
+}
 
 </style>

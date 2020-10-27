@@ -1,13 +1,15 @@
 <template>
   <div>
+      <label for="country_select">Select a country </label>
 
 
       <country-search :countries="countries" />
-      <!-- <label for="country_select">Country:</label>
+      
+      <label for="country_select">Country:</label>
       <select id="country_select" v-model="selectedCountry" v-on:change = "addToQuizList(selectedCountry)" required>
         <option disabled value="">Select a country</option>
         <option v-for="(country, index) in countries" :value="country" :key="index">{{ country.name }}</option>
-      </select> --> 
+      </select>
       <country-detail v-if="selectedCountry" :selectedCountry="selectedCountry"></country-detail>
 
       <div v-if="quizList.length === 4 && !quizList.includes(null)">
@@ -26,7 +28,6 @@
 <script>
 import WorldMap from '@/components/WorldMap.vue'
 import CountryDetail from '@/components/CountryDetail';
-import CountrySearch from '@/components/CountrySearch';
 import {eventBus} from '../main.js'
 
 export default {
@@ -34,7 +35,6 @@ export default {
     components: {
         'country-detail': CountryDetail,
         'world-map': WorldMap,
-        'country-search': CountrySearch
     },
 
     data() {
@@ -49,10 +49,6 @@ export default {
 
     mounted() {
       this.fetchCountries()
-    
-      eventBus.$on('country-selected', (selectedCountry) => {
-      this.selectedCountry = selectedCountry
-    })
   },
 
     methods: {
@@ -69,7 +65,8 @@ export default {
         eventBus.$emit('quizList', this.quizList)
       },
       addToQuizList: function() {
-      this.quizList.push(this.selectedCountry)
+      if (this.quizList.includes(this.selectedCountry) === false) {
+        this.quizList.push(this.selectedCountry) }
       if (this.quizList.length > 4) {
         this.quizList.splice(0, 1)
       }
