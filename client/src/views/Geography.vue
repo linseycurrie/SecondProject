@@ -6,11 +6,11 @@
       <country-search :countries="countries" />
       
       <label for="country_select">Country:</label>
-      <select id="country_select" v-model="selectedCountry" v-on:change = "addToQuizList(selectedCountry)" required>
+      <!-- <select id="country_select" v-model="selectedCountry" required>
         <option disabled value="">Select a country</option>
         <option v-for="(country, index) in countries" :value="country" :key="index">{{ country.name }}</option>
-      </select>
-      <country-detail v-if="selectedCountry" :selectedCountry="selectedCountry"></country-detail>
+      </select> -->
+      <country-detail v-if="selectedCountry" :selectedCountry="selectedCountry" v-on:change = "addToQuizList(selectedCountry)"></country-detail>
 
       <div v-if="quizList.length === 4 && !quizList.includes(null)">
          <router-link v-on:click.native="sendToQuiz" :to="{name: 'quiz'}" :quizList="this.quizList">Quiz</router-link>
@@ -28,12 +28,14 @@
 <script>
 import WorldMap from '@/components/WorldMap.vue'
 import CountryDetail from '@/components/CountryDetail';
+import CountrySearch from '@/components/CountrySearch';
 import {eventBus} from '../main.js'
 
 export default {
 
     components: {
         'country-detail': CountryDetail,
+        'country-search': CountrySearch,
         'world-map': WorldMap,
     },
 
@@ -49,6 +51,12 @@ export default {
 
     mounted() {
       this.fetchCountries()
+
+      eventBus.$on('country-selected', (selectedCountry) => {
+           this.selectedCountry = selectedCountry;
+      })
+
+
   },
 
     methods: {
