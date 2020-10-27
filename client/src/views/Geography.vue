@@ -1,6 +1,7 @@
 <template>
   <div>
-      <label for="country_select">Country:</label>
+
+      <label for="country_select"></label>
       <select id="country_select" v-model="selectedCountry" v-on:change = "addToQuizList(selectedCountry)" required>
         <option disabled value="">Select a country</option>
         <option v-for="(country, index) in countries" :value="country" :key="index">{{ country.name }}</option>
@@ -29,7 +30,7 @@ export default {
 
     components: {
         'country-detail': CountryDetail,
-        'world-map': WorldMap
+        'world-map': WorldMap,
     },
 
     data() {
@@ -40,14 +41,10 @@ export default {
     }
   },
     
-    computed: {
-  
 
-  },
 
     mounted() {
       this.fetchCountries()
-    
   },
 
     methods: {
@@ -68,11 +65,9 @@ export default {
       if (this.quizList.length > 4) {
         this.quizList.splice(0, 1)
       }
-    }, 
-  }
+    },
+  } 
 }
-
-
 
 
 </script>
