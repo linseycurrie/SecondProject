@@ -1,10 +1,8 @@
 <template>
   <div>
-      <label for="country_select">Country:</label>
-    <select id="country_select" v-model="selectedCountry" v-on:change = "addToQuizList(selectedCountry)" required>
-      <option disabled value="">Select a country</option>
-      <option v-for="(country, index) in countries" :value="country" :key="index">{{ country.name }}</option>
-    </select>
+
+
+      <country-search :countries="countries" />
       <country-detail :selectedCountry="selectedCountry"></country-detail>
 
 
@@ -19,13 +17,15 @@
 <script>
 import WorldMap from '@/components/WorldMap.vue'
 import CountryDetail from '@/components/CountryDetail';
+import CountrySearch from '@/components/CountrySearch';
 import {eventBus} from '../main.js'
 
 export default {
 
     components: {
         'country-detail': CountryDetail,
-        'world-map': WorldMap
+        'world-map': WorldMap,
+        'country-search': CountrySearch
     },
 
     data() {
@@ -36,14 +36,14 @@ export default {
     }
   },
     
-    computed: {
-  
 
-  },
 
     mounted() {
       this.fetchCountries()
     
+      eventBus.$on('country-selected', (selectedCountry) => {
+      this.selectedCountry = selectedCountry
+    })
   },
 
     methods: {
@@ -64,11 +64,9 @@ export default {
       if (this.quizList.length > 4) {
         this.quizList.splice(0, 1)
       }
-    }, 
-  }
+    },
+  } 
 }
-
-
 
 
 </script>
