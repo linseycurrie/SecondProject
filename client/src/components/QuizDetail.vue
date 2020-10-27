@@ -11,7 +11,7 @@
 
       <p id = "question"> What region is {{answer.name}} in? </p>
       <div id="choice-wrapper">
-        <div v-for="(entry, index) in this.quesTwo" :key="index" id="choices" > 
+        <div v-for="(entry, index) in this.quesTwo " :key="index" id="choices" > 
           {{entry.region}}
           <input type="radio" id="region-choice" name="region" :value="entry.region" v-model='region'>
         </div>
@@ -70,11 +70,7 @@ export default {
             quesThree: [],
             quesFour: [],
             quesFive: [],
-            quesOneOne: [],
-            quesTwoTwo: [],
-            quesThreeThree: [],
-            quesFourFour: [],
-            quesFiveFive: []
+        
         }
             },
 
@@ -87,22 +83,18 @@ export default {
       
     mounted() {
         eventBus.$on('quizList', (quizList) => {
-           this.quizList = quizList
-           this.quesOne = [...quizList]
-           this.quesOneOne = this.shuffle(quesOne, quesOneOne)
-           this.quesTwo = shuffled
-           console.log(this.quesTwo);
-           shuffled = this.shuffle(quizList)
-           this.quesThree = shuffled
-           console.log(this.quesThree);
-           shuffled = this.shuffle(quizList)
-           this.quesFour = shuffled
-           console.log(this.quesFour);
-           shuffled = this.shuffle(quizList)
-           this.quesFive = shuffled
-           console.log(this.quesFive);
-           this.getAnswer()
-        });
+           this.quizList = quizList;
+           this.quesOne = this.shuffle(quizList);
+           this.quesTwo = this.shuffle(quizList);
+           this.quesThree = this.shuffle(quizList);
+           this.quesFour = this.shuffle(quizList);
+           this.quesFive = this.shuffle(quizList);
+           this.getAnswer();
+        })
+
+          
+          this.shuffle(quesTwo, quesTwoTwo);
+          this.shuffle(quesThree, quesThreeThree);
 
         
 
@@ -145,13 +137,19 @@ export default {
         this.complete = true
       },
 
-      shuffle: function(arrayOne, arrayTwo) {
-        while (arrayOne.length() !== 0) {
-        let index = getRandomInt(arrayOne.length())
-        arrayTwo.push(arrayOne[index]),
-        arrayOne.splice(index, 1)}
-        console.log('This is', arrayTwo)
-        return arrayTwo }
+      shuffle:function(array) {
+          let clone = []
+          for(let element of array){
+            clone.push(element)
+          }
+          for (let i = clone.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          let temp = clone[i];
+          clone[i] = clone[j];
+          clone[j] = temp;
+        }
+        return clone
+      }
 
     }
 
