@@ -1,7 +1,7 @@
 <template>
   <div>
 
-      <label for="country_select"></label>
+      <label for="country_select">Select a country </label>
       <select id="country_select" v-model="selectedCountry" v-on:change = "addToQuizList(selectedCountry)" required>
         <option disabled value="">Select a country</option>
         <option v-for="(country, index) in countries" :value="country" :key="index">{{ country.name }}</option>
@@ -13,7 +13,7 @@
       </div>
 
 
-      <!-- <world-map v-if="countries" :countries="countries" :selectedCountry="selectedCountry"></world-map> -->
+      <world-map v-if="countries" :countries="countries" :selectedCountry="selectedCountry"></world-map>
 
 
    
