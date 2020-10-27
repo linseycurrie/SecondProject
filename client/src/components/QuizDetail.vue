@@ -1,13 +1,6 @@
 <template>
-<<<<<<< HEAD:client/src/components/Quiz.vue
-  <div>
-    
-    <div id="quiz-wrapper"  v-show="this.quizList.length > 0">
-
-=======
     <div id="quiz-wrapper" v-show="this.quizList.length > 0">
       <form action="">
->>>>>>> develop:client/src/components/QuizDetail.vue
       <p id = "question"> What is the population of {{answer.name}}? </p>
       <div id="choice-wrapper">
         <div v-for="(entry, index) in this.quizList" :key="index" id="choices" > 
@@ -71,7 +64,12 @@ export default {
             demonym: null, 
             capital: null,
             flag: null,
-            complete: false
+            complete: false,
+            a: null,
+            b: null,
+            c: null,
+            d: null,
+            e: null,
 
         }
             },
@@ -87,6 +85,8 @@ export default {
         eventBus.$on('quizList', (quizList) => {
            this.quizList = quizList
            this.getAnswer()
+           this.a = this.quizlist.sort()
+           this.b = this.quizlist.reverse()
         });
 
         this.shuffleQuiz(this.quizList)
@@ -125,17 +125,23 @@ export default {
         this.complete = true
       },
 
-      shuffleArray: function(array) {
-        for (var i = array.length - 1; i > 0; i--) {
-          var j = Math.floor(Math.random() * (i + 1));
-          var temp = array[i];
-          array[i] = array[j];
-          array[j] = temp;
-        } },
-        
-      shuffleQuiz: function(quizList) {
-          
-      }
+      shuffle: function(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+        randomIndex = getRandomInt(4);
+         currentIndex -= 1;
+
+    // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue; }
+
+      return array;},
+
     } 
 
     }
