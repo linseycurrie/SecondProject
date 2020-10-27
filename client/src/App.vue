@@ -21,52 +21,12 @@
 
 <script>
 
-// import { eventBus } from '@/main.js';
-// import CountryDetail from './components/CountryDetail.vue';
-// import Quiz from './components/Quiz.vue'
-
 
 
 export default {
   name: 'App',
 
-  // data() {
-  //   return {
-  //     countries: [],
-  //     selectedCountry: null,
-  //     quizList: []
-  //   }
-  // },
 
-// components: {
-//     'country-detail': CountryDetail,
-//     'quiz': Quiz,
-//     'world-map': WorldMap
-//   },
-
-//   computed: {
-//     addToQuizList: function() {
-//     this.quizList.push(this.selectedCountry)
-//     if (this.quizList.length > 4) {
-//       this.quizList.splice(0, 1)
-//     }
-//   },  
-
-//   },
-
-  // mounted() {
-  //   this.fetchCountries()
-    
-  // },
-
-  // methods: {
-  //   fetchCountries: function() {
-  //     const request = fetch("https://restcountries.eu/rest/v2/all")
-  //     .then(response => response.json())
-  //     .then(data => this.countries = data)
-  //     console.log(request)
-  //   },
-  // }
 }
 
 </script>
