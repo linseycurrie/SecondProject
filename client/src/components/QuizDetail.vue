@@ -3,7 +3,7 @@
       <form action="">
       <p id = "question"> What is the population of {{answer.name}}? </p>
       <div id="choice-wrapper">
-        <div v-for="(entry, index) in this.quizList" :key="index" id="choices" > 
+        <div v-for="(entry, index) in this.quesOne" :key="index" id="choices" > 
           {{entry.population}}
           <input type="radio" id="population-choice" name="population" :value="entry.population" v-model="population">
         </div>
@@ -11,7 +11,7 @@
 
       <p id = "question"> What region is {{answer.name}} in? </p>
       <div id="choice-wrapper">
-        <div v-for="(entry, index) in this.quizList" :key="index" id="choices" > 
+        <div v-for="(entry, index) in this.quesTwo" :key="index" id="choices" > 
           {{entry.region}}
           <input type="radio" id="region-choice" name="region" :value="entry.region" v-model='region'>
         </div>
@@ -19,7 +19,7 @@
 
       <p id = "question"> What are people from {{answer.name}} called? </p>
       <div id="choice-wrapper">
-        <div v-for="(entry, index) in this.quizList" :key="index" id="choices" > 
+        <div v-for="(entry, index) in this.quesThree" :key="index" id="choices" > 
           {{entry.demonym}}
           <input type="radio" id="demonym-choice" name="demonym" :value="entry.demonym" v-model='demonym'>
         </div>
@@ -27,7 +27,7 @@
 
       <p id = "question"> What is the capital of {{answer.name}}? </p>
       <div id="choice-wrapper">
-        <div v-for="(entry, index) in this.quizList" :key="index" id="choices" > 
+        <div v-for="(entry, index) in this.quesFour" :key="index" id="choices" > 
           {{entry.capital}}
           <input type="radio" id="capital-choice" name="capital" :value="entry.capital" v-model='capital'>
         </div>
@@ -35,7 +35,7 @@
 
       <p id = "question"> Which is the flag of {{answer.name}}? </p>
       <div id="choice-wrapper">
-        <div v-for="(entry, index) in this.quizList" :key="index" id="choices" > 
+        <div v-for="(entry, index) in this.quesFive" :key="index" id="choices" > 
           <img :src='entry.flag' width=150 height=75>
           <input type="radio" id="flag-choice" name="flag" :value="entry.flag" v-model='flag'>
         </div>
@@ -65,12 +65,16 @@ export default {
             capital: null,
             flag: null,
             complete: false,
-            a: null,
-            b: null,
-            c: null,
-            d: null,
-            e: null,
-
+            quesOne: [],
+            quesTwo: [],
+            quesThree: [],
+            quesFour: [],
+            quesFive: [],
+            quesOneOne: [],
+            quesTwoTwo: [],
+            quesThreeThree: [],
+            quesFourFour: [],
+            quesFiveFive: []
         }
             },
 
@@ -84,20 +88,36 @@ export default {
     mounted() {
         eventBus.$on('quizList', (quizList) => {
            this.quizList = quizList
+           this.quesOne = [...quizList]
+           this.quesOneOne = this.shuffle(quesOne, quesOneOne)
+           this.quesTwo = shuffled
+           console.log(this.quesTwo);
+           shuffled = this.shuffle(quizList)
+           this.quesThree = shuffled
+           console.log(this.quesThree);
+           shuffled = this.shuffle(quizList)
+           this.quesFour = shuffled
+           console.log(this.quesFour);
+           shuffled = this.shuffle(quizList)
+           this.quesFive = shuffled
+           console.log(this.quesFive);
            this.getAnswer()
-           this.a = this.quizlist.sort()
-           this.b = this.quizlist.reverse()
         });
 
-        this.shuffleQuiz(this.quizList)
+        
+
+        // this.shuffle(this.quesThree)
+        // this.shuffle(this.quesFour)
+        // this.shuffle(this.quesFive)
+  
     },
              
     methods: {
-      getRandomInt: function() {
-        return Math.floor(Math.random() * 4);
+      getRandomInt: function(num) {
+        return Math.floor(Math.random() * num);
       },
       getAnswer: function() {
-        let index = this.getRandomInt();
+        let index = this.getRandomInt(4);
         this.answer = this.quizList[index]
       },        
 
@@ -125,26 +145,17 @@ export default {
         this.complete = true
       },
 
-      shuffle: function(array) {
-        var currentIndex = array.length, temporaryValue, randomIndex;
-
-  // While there remain elements to shuffle...
-        while (0 !== currentIndex) {
-
-    // Pick a remaining element...
-        randomIndex = getRandomInt(4);
-         currentIndex -= 1;
-
-    // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue; }
-
-      return array;},
-
-    } 
+      shuffle: function(arrayOne, arrayTwo) {
+        while (arrayOne.length() !== 0) {
+        let index = getRandomInt(arrayOne.length())
+        arrayTwo.push(arrayOne[index]),
+        arrayOne.splice(index, 1)}
+        console.log('This is', arrayTwo)
+        return arrayTwo }
 
     }
+
+    } 
 </script>
 
 <style>
