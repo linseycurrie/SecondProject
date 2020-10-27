@@ -13,7 +13,7 @@
       </div>
 
 
-      <world-map v-if="countries" :countries="countries" :selectedCountry="selectedCountry"></world-map>
+      <!-- <world-map v-if="countries" :countries="countries" :selectedCountry="selectedCountry"></world-map> -->
 
 
    
