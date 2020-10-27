@@ -2,8 +2,7 @@
   <div>
     <h1>QUIZ</h1>
     <quizdetail />
-  
-    </div>
+  </div>
 </template>
 
 <script>
