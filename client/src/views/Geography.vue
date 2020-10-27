@@ -1,25 +1,23 @@
 <template>
   <div>
-      <label for="country_select">Country:</label>
-    <select id="country_select" v-model="selectedCountry" v-on:change = "addToQuizList(selectedCountry)" required>
-      <option disabled value="">Select a country</option>
-      <option v-for="(country, index) in countries" :value="country" :key="index">{{ country.name }}</option>
-    </select>
+
+      <label for="country_select"></label>
+      <select id="country_select" v-model="selectedCountry" v-on:change = "addToQuizList(selectedCountry)" required>
+        <option disabled value="">Select a country</option>
+        <option v-for="(country, index) in countries" :value="country" :key="index">{{ country.name }}</option>
+      </select>
       <country-detail :selectedCountry="selectedCountry"></country-detail>
 
+      <div v-if="quizList.length === 4 && !quizList.includes(null)">
+         <router-link v-on:click.native="sendToQuiz" :to="{name: 'quiz'}" :quizList="this.quizList">Quiz</router-link>
+      </div>
 
 
-      <world-map v-if="countries" :countries="countries" :selectedCountry="selectedCountry"></world-map>
+      <!-- <world-map v-if="countries" :countries="countries" :selectedCountry="selectedCountry"></world-map> -->
 
 
    
-      <div v-if="quizList.length === 4 && !quizList.includes(null)">
 
-         <router-link v-on:click.native="sendToQuiz" :to="{name: 'quiz'}">Quiz</router-link>
-
-         <router-link v-on:click.native="sendToQuiz" :to="{name: 'quiz'}" :quizList="this.quizList">Quiz</router-link>
-
-      </div>
   </div>
 </template>
 
@@ -32,7 +30,7 @@ export default {
 
     components: {
         'country-detail': CountryDetail,
-        'world-map': WorldMap
+        'world-map': WorldMap,
     },
 
     data() {
@@ -43,14 +41,10 @@ export default {
     }
   },
     
-    computed: {
-  
 
-  },
 
     mounted() {
       this.fetchCountries()
-    
   },
 
     methods: {
@@ -67,15 +61,14 @@ export default {
         eventBus.$emit('quizList', this.quizList)
       },
       addToQuizList: function() {
-      this.quizList.push(this.selectedCountry)
+      if (this.quizList.includes(this.selectedCountry) === false) {
+        this.quizList.push(this.selectedCountry) }
       if (this.quizList.length > 4) {
         this.quizList.splice(0, 1)
       }
-    }, 
-  }
+    },
+  } 
 }
-
-
 
 
 </script>

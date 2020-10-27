@@ -1,14 +1,19 @@
 <template>
   <div v-if="selectedCountry" id="selected-country">
 
-      <img class="lrg-flag" :src="selectedCountry.flag" alt="">
+    <h3> {{ selectedCountry.name }} </h3>
+    <img class="lrg-flag" :src="selectedCountry.flag" alt="">
+    <!-- <h3> Capital City: {{ selectedCountry.capital }} </h3>
+    <h3> Region: {{ selectedCountry.subregion }}, {{ selectedCountry.region }} </h3>
+    <h3> Area: {{ selectedCountry.area.toLocaleString() }}km²</h3>
+    <h3> Population: {{ selectedCountry.population.toLocaleString() }}</h3>
+    <h3> Demonym: {{ selectedCountry.demonym }}</h3> -->
 
 
-    <h3> Name:{{ selectedCountry.name }} </h3>
-    <h3> Capital City:{{ selectedCountry.capital }} </h3>
-    <h3> Region:{{ selectedCountry.subregion }}, {{ selectedCountry.region }} </h3>
-    <h3> Area:{{ selectedCountry.area }}km²</h3>
-    <h3> Currency:{{ selectedCountry.currencies[0].name }} - {{ selectedCountry.currencies[0].symbol }} </h3>
+  <p>{{ selectedCountry.name }} is located in {{ selectedCountry.subregion }}, {{ selectedCountry.region }}. 
+    The size of {{ selectedCountry.name }} is {{ selectedCountry.area.toLocaleString() }}km².
+    The Capital City of {{ selectedCountry.name }} is {{ selectedCountry.capital }}. 
+    {{ selectedCountry.population.toLocaleString() }} live in {{ selectedCountry.name }} and they are known as {{ selectedCountry.demonym }}.   </p>
   
   </div>
 
@@ -21,23 +26,7 @@ export default {
   name: 'country-detail',
   props: ['selectedCountry'],
 
-  //   data() {
-  //     return {
-  //     countries: [],
-  //     selectedCountry: null,
-  //     quizList: []
-  //   }
-  // },
 
-  //   computed: {
-  //     addToQuizList: function() {
-  //     this.quizList.push(this.selectedCountry)
-  //     if (this.quizList.length > 4) {
-  //       this.quizList.splice(0, 1)
-  //     }
-  //   },  
-
-  // },
 
 
 }

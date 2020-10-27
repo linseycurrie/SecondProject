@@ -19,7 +19,7 @@
         </div>
       </div> 
 
-      <button v-on:click="compare" > Check Answers </button>
+      <button v-on:click.native="compare" > Check Answers </button>
 
     </div>
   </div>
