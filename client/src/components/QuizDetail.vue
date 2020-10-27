@@ -172,4 +172,8 @@ export default {
 #choices {
   background-color: blanchedalmond;
 }
+
+#question {
+  font: bold;
+}
 </style>
