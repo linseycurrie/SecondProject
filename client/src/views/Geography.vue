@@ -3,14 +3,23 @@
 
 
       <country-search :countries="countries" />
+      <label for="country_select">Country:</label>
+      <select id="country_select" v-model="selectedCountry" v-on:change = "addToQuizList(selectedCountry)" required>
+        <option disabled value="">Select a country</option>
+        <option v-for="(country, index) in countries" :value="country" :key="index">{{ country.name }}</option>
+      </select>
       <country-detail :selectedCountry="selectedCountry"></country-detail>
 
-
-      <!-- <world-map v-if="countries" :countries="countries"></world-map> -->
-   
       <div v-if="quizList.length === 4 && !quizList.includes(null)">
          <router-link v-on:click.native="sendToQuiz" :to="{name: 'quiz'}" :quizList="this.quizList">Quiz</router-link>
       </div>
+
+
+      <world-map v-if="countries" :countries="countries" :selectedCountry="selectedCountry"></world-map>
+
+
+   
+
   </div>
 </template>
 
