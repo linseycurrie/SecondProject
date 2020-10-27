@@ -1,6 +1,13 @@
 <template>
+<<<<<<< HEAD:client/src/components/Quiz.vue
+  <div>
+    
+    <div id="quiz-wrapper"  v-show="this.quizList.length > 0">
+
+=======
     <div id="quiz-wrapper" v-show="this.quizList.length > 0">
       <form action="">
+>>>>>>> develop:client/src/components/QuizDetail.vue
       <p id = "question"> What is the population of {{answer.name}}? </p>
       <div id="choice-wrapper">
         <div v-for="(entry, index) in this.quizList" :key="index" id="choices" > 

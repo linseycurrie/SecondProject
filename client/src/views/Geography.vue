@@ -8,10 +8,17 @@
       <country-detail :selectedCountry="selectedCountry"></country-detail>
 
 
-      <!-- <world-map v-if="countries" :countries="countries"></world-map> -->
+
+      <world-map v-if="countries" :countries="countries" :selectedCountry="selectedCountry"></world-map>
+
+
    
       <div v-if="quizList.length === 4 && !quizList.includes(null)">
+
+         <router-link v-on:click.native="sendToQuiz" :to="{name: 'quiz'}">Quiz</router-link>
+
          <router-link v-on:click.native="sendToQuiz" :to="{name: 'quiz'}" :quizList="this.quizList">Quiz</router-link>
+
       </div>
   </div>
 </template>

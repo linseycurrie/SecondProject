@@ -18,6 +18,7 @@ const router = new Router({
             path: '/quiz',
             name: 'quiz',
             component: Quiz,
+  
         },
         {
             path: '',
