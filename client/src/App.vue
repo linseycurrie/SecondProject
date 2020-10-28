@@ -39,7 +39,9 @@ export default {
 
 <style>
 
-
+#view{
+  display: flex;
+}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
