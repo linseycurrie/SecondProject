@@ -60,7 +60,6 @@ export default {
         fetchScores() {
             ScoresService.getScores()
             .then(scores => this.scores = scores);
-            console.log(scores)
             },  
     }
 }    

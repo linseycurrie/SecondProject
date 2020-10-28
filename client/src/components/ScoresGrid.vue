@@ -1,20 +1,20 @@
 <template lang="html">
 <div v-if="scores">
-
-    <!-- <p v-for="(score, index) in scores">{{score.name}} {{score.score}}</p> -->
-
+    
     <table class="table" style=width:100%>
         <thead>
-        <tr>
-            <th>Name</th>
-            <th>Score</th>
-        </tr>
+            <h2>Score Board</h2>
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
         </thead>
-        <tbody/>
-        <tr v-for="(score, index) in scores" >    
-            <td>{{score.name}}</td>
-            <td>{{score.score}}</td>
-        </tr>
+        <tbody>
+            <tr v-for="(score, index) in scores" >    
+                <td>{{score.name}}</td>
+                <td>{{score.score}}</td>
+            </tr>
+        </tbody>
     </table>
 </div>
   
@@ -41,16 +41,16 @@ export default {
     },
 
     mounted(){
-        // this.fetchScores()
+        this.fetchScores()
     },
-
-    methods:{
-
-        }
+    methods: {
+        fetchScores() {
+            ScoresService.getScores()
+            .then(scores => this.scores = scores);
+            },  
+    }
 }
-
 </script>
-
 
 <style>
 

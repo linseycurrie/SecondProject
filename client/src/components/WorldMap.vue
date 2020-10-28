@@ -46,10 +46,12 @@ export default {
           LPopup,
           LIcon
     },
+
     methods: {
         latLng: function(lat, lng){
             return [lat, lng];
         }
+
 
   }
 }
