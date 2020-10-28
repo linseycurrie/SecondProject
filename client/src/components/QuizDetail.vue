@@ -159,8 +159,8 @@ export default {
         this.score = userAnswers.reduce((a,b) => a + b, 0)
         this.complete = true
         eventBus.$emit('score', this.score)
-        }
-      },
+        },
+      
 
       shuffle:function(array) {
           let clone = []
@@ -177,6 +177,7 @@ export default {
       }
 
     }
+}
 
 
 </script>
