@@ -13,7 +13,7 @@
         </l-marker> -->
       <l-marker v-if="selectedCountry" class="marker"
           :lat-lng="latLng(selectedCountry.latlng[0], selectedCountry.latlng[1])">
-          <l-icon class="arrow" :icon-size="smallIcon" :icon-url="icon"></l-icon>
+          <l-icon class="arrow" :icon-size="largeIcon" :icon-url="icon"></l-icon>
           <l-popup id="popup"> 
             {{selectedCountry.name}}
             <img src="selectedCountry.flag" alt="">
