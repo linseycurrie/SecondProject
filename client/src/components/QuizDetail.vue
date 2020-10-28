@@ -161,6 +161,7 @@ export default {
         this.complete = true
         eventBus.$emit('score', this.score)
         },
+      
 
       shuffle:function(array) {
           let clone = []
@@ -178,6 +179,7 @@ export default {
 
     }
 }
+
 
 </script>
 
