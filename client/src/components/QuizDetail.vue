@@ -72,7 +72,7 @@ export default {
             answer: null,
             population: null,
             region: null,
-            score: 0 ,
+            score: 0,
             quizList: [],
             demonym: null, 
             capital: null,
@@ -102,12 +102,13 @@ export default {
     mounted() {
         eventBus.$on('quizList', (quizList) => {
            this.quizList = quizList;
+           this.getAnswer();
            this.quesOne = this.shuffle(quizList);
            this.quesTwo = this.shuffle(quizList);
            this.quesThree = this.shuffle(quizList);
            this.quesFour = this.shuffle(quizList);
            this.quesFive = this.shuffle(quizList);
-           this.getAnswer();
+           
         })
   
     },
