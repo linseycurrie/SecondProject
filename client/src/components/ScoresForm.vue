@@ -1,18 +1,20 @@
 <template>
-    <div>
-        <div>
-<form v-on:submit="addScore" method="post" id="scores-form">
-      <h3>Save your score!</h3>
-      <div>
-          <label for="name">Enter your name:</label>
-          <input type="text" id="name" v-model="name" required>Score: {{score}}
-      </div>
-</form>
-    </div>
-
-
+<div>
+    <div v-if="this.score">
+        <form v-on:submit="addScore" id="scores-form">
+            <h3>Save your score!</h3>
+            <div>
+                <label for="name">Enter your name:</label>
+                <input type="text" id="name" v-model="name" required>Score: {{score}}
+                <button type="submit">Save</button>
+            </div>
+        </form>
 </div>
-
+<div v-if="scores">
+        <scoresGrid :scores="scores"/>
+</div>
+</div>
+ 
 </template>
 
 <script>
@@ -20,6 +22,7 @@
 import {eventBus} from '../main.js'
 import QuizDetail from './QuizDetail'
 import ScoresService from '../services/ScoresService'
+import ScoresGrid from '@/components/ScoresGrid.vue'
 
 
 
@@ -39,13 +42,12 @@ export default {
         this.score = score;
         })
     },
+        components: {
+        'scoresGrid': ScoresGrid
+    
+    },
 
     methods: {
-        fetchScores() {
-        ScoresService.getScores()
-        .then(scores => this.scores = scores);
-        },   
-        
         addScore(e) {
             e.preventDefault()
             const score = {
@@ -53,8 +55,13 @@ export default {
                 score: this.score,
             }
             ScoresService.postScore(score)
-            .then(res => eventBus.$emit('score-added', res))
-        }
+            .then(() => {this.fetchScores()})
+        },
+        fetchScores() {
+            ScoresService.getScores()
+            .then(scores => this.scores = scores);
+            console.log(scores)
+            },  
     }
 }    
 </script>

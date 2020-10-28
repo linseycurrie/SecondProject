@@ -14,23 +14,12 @@
       <img id="pic3" class="img" src="../assets/Languages.svg" alt="">
   </div>
 
-  <scores-grid score="score"/>
-    </div>
 
-    
+</div>
 </template>
 
 <script>
-
-import ScoresGrid from '@/components/ScoresGrid';
-
 export default {
-
-
-
-    components: {
-        'scores-grid': ScoresGrid
-    }
 
 }
 </script>
