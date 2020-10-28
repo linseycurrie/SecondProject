@@ -101,4 +101,9 @@ export default {
   font-weight: bolder;
   padding: 10px;
 }
+
+#country-select {
+  font-weight: bold;
+  color: #FB8500;
+}
 </style>

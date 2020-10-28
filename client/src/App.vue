@@ -48,6 +48,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin-top: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
 };
 #container {
   display: flex;
@@ -61,7 +63,7 @@ export default {
   display: flex;
   flex-direction: row wrap;
   justify-content: space-between;
-  border-bottom: 1pt #023047 solid;
+  border-bottom: 3pt #023047 solid;
 }
 
 #rlink {

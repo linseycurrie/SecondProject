@@ -41,7 +41,10 @@ export default {
 
 <style lang="css">
 
-
+#selected-country {
+  font-weight: bold;
+  color: #FB8500;
+}
 
 .lrg-flag {
   height: 100px

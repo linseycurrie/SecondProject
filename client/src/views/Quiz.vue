@@ -1,6 +1,6 @@
 <template>
   <div>
-        <quizdetail />
+    <quizdetail />
   </div>
 </template>
 
@@ -13,6 +13,8 @@ export default {
     
         }
 }
+
+
 </script>
 
 <style>

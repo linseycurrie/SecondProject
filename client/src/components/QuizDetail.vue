@@ -186,7 +186,7 @@ export default {
 #quiz-wrapper {
   display: flex;
   flex-direction: column;
-  margin-left: 180px
+  margin-left: 140px
 }
 #question {
   width: 100%
