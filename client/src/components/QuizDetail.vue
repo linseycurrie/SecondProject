@@ -1,7 +1,9 @@
 <template>
-  <div id="grid-wrapper">
+  <div>
+      <img id= "logo" src="https://devonwithkids.co.uk/wp-content/uploads/2020/04/Quiz-300x223.jpg" alt="quiz-title">
     <div id="quiz-wrapper"  v-show="this.quizList.length > 0">
-      <form action="" class="grid-item">
+      
+      <form action="">
       <p id = "question"> What is the population of {{answer.name}}? </p> 
       <div id="choice-wrapper">
         <div v-for="(entry, index) in this.quesOne" :key="index" id="choices" > 
@@ -127,35 +129,30 @@ export default {
           userAnswers.push(20)
           this.answerOne = 1
         } else {
-          userAnswers.push(20)
           this.answerOne = 2
         };
         if (this.answer.region === this.region) {
          userAnswers.push(20)
           this.answerTwo = 1
         } else {
-          userAnswers.push(20)
           this.answerTwo = 2
         };
         if (this.answer.demonym === this.demonym) {
           userAnswers.push(20)
           this.answerThree = 1
         } else {
-          userAnswers.push(20)
           this.answerThree = 2
         };
         if (this.answer.flag === this.flag) {
           userAnswers.push(20)
           this.answerFive = 1
         } else {
-          userAnswers.push(20)
           this.answerFive = 2
         };
         if (this.answer.capital === this.capital) {
           userAnswers.push(20)
           this.answerFour = 1
         } else {
-          userAnswers.push(20)
           this.answerFour = 2
         }
 
@@ -189,6 +186,7 @@ export default {
 #quiz-wrapper {
   display: flex;
   flex-direction: column;
+  margin-left: 180px
 }
 #question {
   width: 100%
@@ -221,5 +219,8 @@ export default {
   background-color: #FFB703;
   font-weight: bolder;
   padding: 10px;
+}
+#logo{
+  margin-left: 150px 
 }
 </style>

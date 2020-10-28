@@ -10,7 +10,7 @@
       <country-detail v-if="selectedCountry" :selectedCountry="selectedCountry" v-on:change = "addToQuizList(selectedCountry)"></country-detail>
 
       <div v-if="quizList.length === 4 && !quizList.includes(null)">
-         <router-link v-on:click.native="sendToQuiz" :to="{name: 'quiz'}" :quizList="this.quizList">Quiz</router-link>
+         <router-link v-on:click.native="sendToQuiz" :to="{name: 'quiz'}" :quizList="this.quizList" id="button">Quiz</router-link>
       </div>
       </div>
       
@@ -93,5 +93,12 @@ export default {
 #map{
   width: 70%;
   margin-left: 30px
+}
+
+#button {
+  border: 1pt solid #FB8500;
+  background-color: #FFB703;
+  font-weight: bolder;
+  padding: 10px;
 }
 </style>
