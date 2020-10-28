@@ -80,12 +80,12 @@ export default {
   flex-direction: row wrap;
 }
 #country-select {
-  width: 50%;
+  width: 30%;
   order: 2
 
 }
 #map{
-  width: 50%;
+  width: 70%;
   margin-left: 30px
 }
 </style>
