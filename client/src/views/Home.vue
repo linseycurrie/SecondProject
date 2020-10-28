@@ -1,8 +1,9 @@
 <template id="home">
-  <div>
+  <div id="images">
       <img class="img" src="../assets/Geography.svg" alt="">
       <img class="img" src="../assets/Maths.svg" alt="">
       <img class="img" src="../assets/English.svg" alt="">
+      <img class="animate__animated animate__bounce" src="../assets/cute-brain-cartoon.png">
       <img class="img" src="../assets/Science.svg" alt="">
       <img class="img" src="../assets/History.svg" alt="">
       <img class="img" src="../assets/Languages.svg" alt="">
@@ -19,8 +20,9 @@ export default {
 
 
 .img {
-
 height: 200px;
 width: 200px;
 }
+
+
 </style>
