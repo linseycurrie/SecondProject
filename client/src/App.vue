@@ -16,9 +16,6 @@
 
     </header>
     <body>
-    <!-- <div id="box-four">
-      <img class="animate__animated animate__bounce" src="./assets/owlGrad.png">
-    </div> -->
 
     <router-view id="view"></router-view>
     </body>
