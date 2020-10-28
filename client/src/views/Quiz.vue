@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>QUIZ</h1>
+    <img src="https://devonwithkids.co.uk/wp-content/uploads/2020/04/Quiz-300x223.jpg" alt="quiz-title">
     <quizdetail />
   </div>
 </template>
