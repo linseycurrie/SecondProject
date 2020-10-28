@@ -1,15 +1,10 @@
 <template>
   <div>
-      <label for="country_select">Select a country </label>
-
-
-      <country-search :countries="countries" />
-      
-      <label for="country_select">Country:</label>
-      <!-- <select id="country_select" v-model="selectedCountry" required>
+      <label for="country_select">Select a Country: </label>      
+      <select id="country_select" v-model="selectedCountry" required>
         <option disabled value="">Select a country</option>
         <option v-for="(country, index) in countries" :value="country" :key="index">{{ country.name }}</option>
-      </select> -->
+      </select>
       <country-detail v-if="selectedCountry" :selectedCountry="selectedCountry" v-on:change = "addToQuizList(selectedCountry)"></country-detail>
 
       <div v-if="quizList.length === 4 && !quizList.includes(null)">
@@ -17,7 +12,7 @@
       </div>
 
 
-      <!-- <world-map v-if="countries" :countries="countries" :selectedCountry="selectedCountry"></world-map> -->
+      <world-map v-if="countries" :countries="countries" :selectedCountry="selectedCountry"></world-map>
 
 
    

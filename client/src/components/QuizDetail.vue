@@ -41,7 +41,7 @@
         </div>
       </div> 
 
-      <button v-on:click="compare" > Check Answers </button>
+      <button v-on:click="compare"> Check Answers </button>
       <p v-if="complete">You scored {{this.score}}%! </p>
     </form>
     </div>
@@ -135,6 +135,8 @@ export default {
 
         this.score = userAnswers.reduce((a,b) => a + b, 0)
         this.complete = true
+        eventBus.$emit('score', this.score)
+        }
       },
 
       shuffle:function(array) {
@@ -153,7 +155,7 @@ export default {
 
     }
 
-    } 
+
 </script>
 
 <style>
