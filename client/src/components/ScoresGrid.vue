@@ -1,6 +1,6 @@
 <template>
 <div>
-    <table class="table" style="width:100%">
+    <!-- <table class="table" style="width:100%">
     <thead>
         <tr>
             <th>Name</th>
@@ -14,15 +14,30 @@
 
         </tr>
     </tbody>
-    </table>
+    </table> -->
+
+
+    <div id="scoresGrid">
+        <score v-for="(score, index) in scores" :key="index" :score="score"></score>
+    </div>
 </div>
 </template>
-
 <script>
-export default {
 
+import { eventBus } from '@/main.js'
+import Score from './Score';
+
+export default {
+    name: 'scores-grid',
+    props: ['scores'],
+
+    components: {
+        'score': Score
+    },
 }
+
 </script>
+
 
 <style>
 

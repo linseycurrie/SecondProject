@@ -26,6 +26,7 @@ export default {
         return {
             name: '',
             score: null,
+            scores: [],
             
         }
     },
@@ -37,13 +38,18 @@ export default {
     },
 
     methods: {
+        fetchScores() {
+        ScoresService.getScores()
+        .then(scores => this.scores = scores);
+        },   
+        
         addScore(e) {
             e.preventDefault()
-            const result = {
+            const score = {
                 name: this.name,
                 score: this.score,
             }
-            ScoresService.postScore(result)
+            ScoresService.postScore(score)
             .then(res => eventBus.$emit('score-added', res))
         }
     }
