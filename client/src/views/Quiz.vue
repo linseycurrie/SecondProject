@@ -17,6 +17,8 @@ export default {
         'scoresForm': ScoresForm
         }
 }
+
+
 </script>
 
 <style>
