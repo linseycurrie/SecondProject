@@ -53,11 +53,7 @@
       <div v-if="this.answerFive == 1"> <img src="@/assets/tick.png"/> </div>
       <div v-else-if="this.answerFive == 2"> <img src="@/assets/cross.png" ></div>
 
-<<<<<<< HEAD
-      <button v-on:click="compare"> Check Answers </button>
-=======
       <button v-on:click="compare" id="button"> Check Answers </button>
->>>>>>> develop
       <p v-if="complete">You scored {{this.score}}%! </p>
     </form>
     </div>
