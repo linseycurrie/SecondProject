@@ -102,16 +102,6 @@ export default {
            this.quesFive = this.shuffle(quizList);
            this.getAnswer();
         })
-
-          
-          this.shuffle(quesTwo, quesTwoTwo);
-          this.shuffle(quesThree, quesThreeThree);
-
-        
-
-        // this.shuffle(this.quesThree)
-        // this.shuffle(this.quesFour)
-        // this.shuffle(this.quesFive)
   
     },
              
