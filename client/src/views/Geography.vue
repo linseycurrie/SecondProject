@@ -1,7 +1,15 @@
 <template>
+<<<<<<< HEAD
   <div>
       <label for="country_select">Select a Country: </label>      
       <select id="country_select" v-model="selectedCountry" required>
+=======
+<div id="geography-wrapper">
+  <div id="country-select">
+      <label for="country_select">Select a country </label>
+
+      <select id="country_select" v-model="selectedCountry" v-on:change = "addToQuizList(selectedCountry)" required>
+>>>>>>> develop
         <option disabled value="">Select a country</option>
         <option v-for="(country, index) in countries" :value="country" :key="index">{{ country.name }}</option>
       </select>
@@ -10,9 +18,9 @@
       <div v-if="quizList.length === 4 && !quizList.includes(null)">
          <router-link v-on:click.native="sendToQuiz" :to="{name: 'quiz'}" :quizList="this.quizList">Quiz</router-link>
       </div>
-
-
-      <world-map v-if="countries" :countries="countries" :selectedCountry="selectedCountry"></world-map>
+      </div>
+      
+      <world-map v-if="countries" :countries="countries" :selectedCountry="selectedCountry" id="map"></world-map>
 
 
    
@@ -81,5 +89,17 @@ export default {
 </script>
 
 <style>
+#geography-wrapper {
+  display: flex;
+  flex-direction: row wrap;
+}
+#country-select {
+  width: 30%;
+  order: 2
 
+}
+#map{
+  width: 70%;
+  margin-left: 30px
+}
 </style>

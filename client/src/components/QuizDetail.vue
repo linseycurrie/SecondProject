@@ -1,49 +1,64 @@
 <template>
-    <div id="quiz-wrapper" v-show="this.quizList.length > 0">
-      <form action="">
-      <p id = "question"> What is the population of {{answer.name}}? </p>
+  <div id="grid-wrapper">
+    <div id="quiz-wrapper"  v-show="this.quizList.length > 0">
+      <form action="" class="grid-item">
+      <p id = "question"> What is the population of {{answer.name}}? </p> 
       <div id="choice-wrapper">
         <div v-for="(entry, index) in this.quesOne" :key="index" id="choices" > 
-          {{entry.population}}
+          {{entry.population}}<br>
           <input type="radio" id="population-choice" name="population" :value="entry.population" v-model="population">
         </div>
       </div>
-
+      <div v-if="this.answerOne == 1"> <img src="@/assets/tick.png"/> </div>
+      <div v-else-if="this.answerOne == 2"> <img src="@/assets/cross.png" ></div>
       <p id = "question"> What region is {{answer.name}} in? </p>
+       
       <div id="choice-wrapper">
         <div v-for="(entry, index) in this.quesTwo " :key="index" id="choices" > 
-          {{entry.region}}
+          {{entry.region}}<br>
           <input type="radio" id="region-choice" name="region" :value="entry.region" v-model='region'>
         </div>
       </div> 
+      <div v-if="this.answerTwo == 1"> <img src="@/assets/tick.png"/> </div>
+      <div v-else-if="this.answerTwo== 2"> <img src="@/assets/cross.png" ></div>
 
       <p id = "question"> What are people from {{answer.name}} called? </p>
       <div id="choice-wrapper">
         <div v-for="(entry, index) in this.quesThree" :key="index" id="choices" > 
-          {{entry.demonym}}
+          {{entry.demonym}}<br>
           <input type="radio" id="demonym-choice" name="demonym" :value="entry.demonym" v-model='demonym'>
         </div>
       </div> 
-
+      <div v-if="this.answerThree == 1"> <img src="@/assets/tick.png"/> </div>
+      <div v-else-if="this.answerThree == 2"> <img src="@/assets/cross.png" ></div>
       <p id = "question"> What is the capital of {{answer.name}}? </p>
       <div id="choice-wrapper">
         <div v-for="(entry, index) in this.quesFour" :key="index" id="choices" > 
-          {{entry.capital}}
+          {{entry.capital}}<br>
           <input type="radio" id="capital-choice" name="capital" :value="entry.capital" v-model='capital'>
         </div>
       </div> 
+      <div v-if="this.answerFour == 1"> <img src="@/assets/tick.png"/> </div>
+      <div v-else-if="this.answerFour == 2"> <img src="@/assets/cross.png" ></div>
 
       <p id = "question"> Which is the flag of {{answer.name}}? </p>
       <div id="choice-wrapper">
         <div v-for="(entry, index) in this.quesFive" :key="index" id="choices" > 
-          <img :src='entry.flag' width=150 height=75>
+          <img :src='entry.flag' width=150 height=75><br>
           <input type="radio" id="flag-choice" name="flag" :value="entry.flag" v-model='flag'>
         </div>
       </div> 
+      <div v-if="this.answerFive == 1"> <img src="@/assets/tick.png"/> </div>
+      <div v-else-if="this.answerFive == 2"> <img src="@/assets/cross.png" ></div>
 
+<<<<<<< HEAD
       <button v-on:click="compare"> Check Answers </button>
+=======
+      <button v-on:click="compare" id="button"> Check Answers </button>
+>>>>>>> develop
       <p v-if="complete">You scored {{this.score}}%! </p>
     </form>
+    </div>
     </div>
  
 </template>
@@ -70,6 +85,11 @@ export default {
             quesThree: [],
             quesFour: [],
             quesFive: [],
+            answerOne: 0,
+            answerTwo: 0,
+            answerThree: 0,
+            answerFour: 0,
+            answerFive: 0,
         
         }
             },
@@ -91,16 +111,6 @@ export default {
            this.quesFive = this.shuffle(quizList);
            this.getAnswer();
         })
-
-          
-          this.shuffle(quesTwo, quesTwoTwo);
-          this.shuffle(quesThree, quesThreeThree);
-
-        
-
-        // this.shuffle(this.quesThree)
-        // this.shuffle(this.quesFour)
-        // this.shuffle(this.quesFive)
   
     },
              
@@ -119,19 +129,39 @@ export default {
 
         if (this.answer.population === this.population) {
           userAnswers.push(20)
+          this.answerOne = 1
+        } else {
+          userAnswers.push(20)
+          this.answerOne = 2
         };
         if (this.answer.region === this.region) {
+         userAnswers.push(20)
+          this.answerTwo = 1
+        } else {
           userAnswers.push(20)
+          this.answerTwo = 2
         };
         if (this.answer.demonym === this.demonym) {
           userAnswers.push(20)
+          this.answerThree = 1
+        } else {
+          userAnswers.push(20)
+          this.answerThree = 2
         };
         if (this.answer.flag === this.flag) {
           userAnswers.push(20)
+          this.answerFive = 1
+        } else {
+          userAnswers.push(20)
+          this.answerFive = 2
         };
         if (this.answer.capital === this.capital) {
           userAnswers.push(20)
-        };
+          this.answerFour = 1
+        } else {
+          userAnswers.push(20)
+          this.answerFour = 2
+        }
 
         this.score = userAnswers.reduce((a,b) => a + b, 0)
         this.complete = true
@@ -159,6 +189,7 @@ export default {
 </script>
 
 <style>
+
 #quiz-wrapper {
   display: flex;
   flex-direction: column;
@@ -170,8 +201,29 @@ export default {
   display: flex;
   flex-direction: row wrap;
   justify-content: space-around;
+  margin: 30px;
+  
 }
 #choices {
-  background-color: blanchedalmond;
+  background-color: #8ECAE6;
+  padding: 40px;
+  text-align: center;
+  width: 50%;
+  margin: 10px;
+  border: 2pt solid #023047;
+  font-weight: bold;
+
+}
+
+#question {
+  font-weight: bold;
+  font-size: 20px
+}
+
+#button {
+  border: 1pt solid #FB8500;
+  background-color: #FFB703;
+  font-weight: bolder;
+  padding: 10px;
 }
 </style>
